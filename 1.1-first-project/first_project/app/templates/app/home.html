@@ -10,5 +10,11 @@
         <a href="{{ url }}">{{ title }}</a>
         <br>
     {% endfor %}
+    {% block content %}
+    <p>{{ text }}</p>
+    {% endblock %}
+    {% for value in file_list %}
+        <p>{{ value }}</p>
+    {% endfor %}
 </body>
 </html>
