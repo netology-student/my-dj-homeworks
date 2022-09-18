@@ -8,6 +8,7 @@ class Teacher(models.Model):
     class Meta:
         verbose_name = 'Учитель'
         verbose_name_plural = 'Учителя'
+        default_related_name = 'teachers'
 
     def __str__(self):
         return self.name
@@ -15,7 +16,8 @@ class Teacher(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    # teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teachers = models.ManyToManyField(Teacher, verbose_name='Учителя ученика', related_name='teachers')
     group = models.CharField(max_length=10, verbose_name='Класс')
 
     class Meta:
